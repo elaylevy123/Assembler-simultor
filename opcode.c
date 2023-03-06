@@ -1,9 +1,3 @@
-/*
-// Maman14 project for assembler to a pre-defined assembly language
-// Project Owners: Ofir Shmuel and Yonatan Ben Yosef
-// Semester: 2023a
-*/
-
 #include "opcode.h"
 
 void addParam(int param, int whichParam, encoder *enc){
@@ -73,6 +67,10 @@ void addClassify(encoder *enc, int whichClassify){
             break;
     } /* end switch */
 }
+
+/* the function takes an encoded field in an "encoder" structure and converts it into a string representation of its bits. 
+The function does this by iterating over the bits in the encoded field and setting the corresponding character in a character array to either '/' or '.' to represent a 1 or 0 bit, respectively.
+The resulting string representation of the bits is stored in the character array passed as an argument to the function. */
 
 void convertEncode(encoder *enc, char bitLineStr[14]){
 
@@ -239,6 +237,10 @@ void addRegEncode(encoder *enc, int regNum, int whichParam){
             break;
     } /* end switch */
 }
+
+/* This function encodes a given number "num" into a specified field in an "encoder" structure.
+The function assumes that the specified field has already been initialized to 0, 
+and encodes the bits of "num" into bits 2 through 13 of the field. */
 
 void addNumEncode(encoder *enc, int num){
 
