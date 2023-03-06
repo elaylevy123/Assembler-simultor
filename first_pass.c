@@ -1,10 +1,8 @@
-/*
-// Maman14 project for assembler to a pre-defined assembly language
-// Project Owners: Ofir Shmuel and Yonatan Ben Yosef
-// Semester: 2023a
-*/
 
 #include "first_pass.h"
+
+/* This function takes a line of code as input and checks whether the line contains a label or not. 
+It returns 1 if there is a label, 0 if there is no label, and -1 if the label is invalid */
 
 int isLbl (char *line){
 
@@ -33,6 +31,9 @@ int isLbl (char *line){
 
     return 0;
 }
+
+/* The function then checks if the label name is a reserved word, such as a register name or an instruction or directive command.
+If it is, it prints an error message and returns 0. */
 
 int validLblName(symHead *sym, char *labelName, int type, int *error , int lineCnt){
 
@@ -290,6 +291,9 @@ void saveLblName(char *line, char *lblName){
         lblName[0] = ' ';
 
 }
+/* The function checks if a given word matches a specific command. 
+It takes in two arguments: line which is a pointer to a character array representing the current line of code being parsed,
+and command which is a pointer to a character array representing the specific command to match. */
 
 int checkWord(char *line, char *command){
 
@@ -383,12 +387,12 @@ void readDataParam(essentials *asmParam, headData *headDataTbl, char *line, int 
 
     int num = 0;
     int firstIC = asmParam->IC;
-    char *comma = NULL; /* will point on the char after the num */
+    char *comma = NULL; 
     errno = 0;
 
-    if (*line != ' ' && *line != '\t') {
+    if (*line != ' ' && *line != '\t') { /* checking if the first character of the string is not a space or a tab character*/
 
-        if(*line == '\n' || *line == '\0') { /* check if after the .data command we do not have param */
+        if(*line == '\n' || *line == '\0') { 
 
             noParam(error, lineCnt); /* error message */
             return;
@@ -413,9 +417,9 @@ void readDataParam(essentials *asmParam, headData *headDataTbl, char *line, int 
 
     while(*line != '\n' && *line != '\0') {
 
-        num = strtol(line, &comma, 10); /* we want to check the number and the comma */
+        num = strtol(line, &comma, 10); /* check the number and the comma (",") */
 
-        if (line == comma || (errno != 0 && num == 0)) { /* the parameters are not numbers*/
+        if (line == comma || (errno != 0 && num == 0)) { /* check if the parameters is numbers*/
 
             invalidDataParam(error, lineCnt); /* error message */
             return;
@@ -425,7 +429,7 @@ void readDataParam(essentials *asmParam, headData *headDataTbl, char *line, int 
 
             skipTabSpace(comma);
 
-            if(*comma == '\n' || *comma == '\0'){ /* we reach to end of line */
+            if(*comma == '\n' || *comma == '\0'){ 
 
                 addDataLine(headDataTbl, num, firstIC);
                 asmParam->DC += 1;
@@ -448,7 +452,7 @@ void readDataParam(essentials *asmParam, headData *headDataTbl, char *line, int 
             else { /* *comma = ',' */
 
                 comma++;
-                skipTabSpace(comma); /* we want to check if the user enter 2 commas in row */
+                skipTabSpace(comma); 
 
                 if(*comma == '\n' || *comma == '\0'){
 
