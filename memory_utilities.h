@@ -1,9 +1,3 @@
-/*
-// Maman14 project for assembler to a pre-defined assembly language
-// Project Owners: Ofir Shmuel and Yonatan Ben Yosef
-// Semester: 2023a
-*/
-
 #ifndef MAMAN14_AUXILIARY_STRUCTURES_H
 #define MAMAN14_AUXILIARY_STRUCTURES_H
 
