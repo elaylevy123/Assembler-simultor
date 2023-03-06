@@ -1,10 +1,6 @@
-/*
-// Maman14 project for assembler to a pre-defined assembly language
-// Project Owners: Ofir Shmuel and Yonatan Ben Yosef
-// Semester: 2023a
-*/
-
 #include "memory_utilities.h"
+
+/* This function creates a new empty macro table by allocating memory */
 
 mcrHead *crtMcrTbl(){
 
@@ -16,6 +12,9 @@ mcrHead *crtMcrTbl(){
     list->head = NULL;
     return list;
 }
+/* The function used to store some values used throughout the assembly process, 
+such as the value of the data counter (DC) and instruction counter (IC), 
+as well as other information that is relevant to the assembly process. */
 
 essentials *crtEsn(){
 
@@ -34,12 +33,14 @@ symHead *crtSymTbl(){
 
     symHead *list = malloc(sizeof(symHead));
 
-    if(list == NULL)
+    if(list == NULL) /* Check if memory allocation was successful, and call memAllocFail() if it was not */
         memAllocFail();
 
     list->head = NULL;
     return list;
 }
+
+/* This function creates a new linked list for data nodes by allocating memory for a headData struct and initializing it. */
 
 headData *crtDataTbl(){
 
@@ -132,6 +133,11 @@ void addDataLine(headData *headDataTbl, int num, int IC){
     } /* end else */
 }
 
+/* the function checks whether the "i"-th bit of the "num" value is set to 1 using the bitwise AND operator with the value (1<<i).
+If the "i"-th bit is indeed set to 1,
+the function sets the corresponding bit of the "param" field of the encoder structure to 1 using the bitwise OR operator
+with the value (1<<i). */
+
 void addDataParam(encoder *enc, int num){
 
     int i;
@@ -148,6 +154,9 @@ void initEncode(encoder *enc){
     enc->param = 0;
 }
 
+/* The function then checks whether the memory allocation was successful by testing if the returned pointer "p" is NULL.
+If the memory allocation failed, the function calls another function named "memAllocFail" */
+
 encoder *crtEnc(){
 
     encoder *p = malloc(sizeof(encoder));
@@ -159,6 +168,8 @@ encoder *crtEnc(){
 
     return p;
 }
+/*  that checks whether a given string "name" is a valid identifier in the assembly language being implemented.
+The function returns 1 if "name" is an invalid identifier and 0 if it is a valid identifier */
 
 int invalidName(char *name){
 
@@ -189,6 +200,8 @@ int invalidName(char *name){
     return 0;
 }
 
+/*This function frees the memory allocated of the macro table */
+
 void freeDataTbl(headData *list){
 
     dataTbl *tmp = list->head;
@@ -204,6 +217,8 @@ void freeDataTbl(headData *list){
     free(list);
 }
 
+/* This function frees the memory allocated of the macro table */
+
 void freeMcrTbl(mcrHead *list){
 
     mcrTbl *tmp = list->head;
@@ -217,6 +232,8 @@ void freeMcrTbl(mcrHead *list){
 
     free(list);
 }
+
+/* This function frees the memory allocated of the symbol table */
 
 void freeSymTbl(symHead *list){
 
