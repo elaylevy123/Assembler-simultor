@@ -1,9 +1,3 @@
-/*
-// Maman14 project for assembler to a pre-defined assembly language
-// Project Owners: Ofir Shmuel and Yonatan Ben Yosef
-// Semester: 2023a
-*/
-
 #include "preassembler.h"
 
 void remSpaces(char *p) {
@@ -140,6 +134,9 @@ int chkMcrName(mcrHead *mcr, char *line, FILE *amFile, FILE *source){
 
     return 0;
 }
+
+/*This function check If the characters match, the function returns 1,
+indicating that word appears at the beginning of line. Otherwise, it returns 0. */
 
 int chkWord (char *line, char *word){
 
