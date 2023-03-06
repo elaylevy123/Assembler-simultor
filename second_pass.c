@@ -1,9 +1,3 @@
-/*
-// Maman14 project for assembler to a pre-defined assembly language
-// Project Owners: Ofir Shmuel and Yonatan Ben Yosef
-// Semester: 2023a
-*/
-
 #include "second_pass.h"
 
 void putEntFile(FILE *entFile, symHead *symHead, char *lblName, int lineCnt, int *error) {
